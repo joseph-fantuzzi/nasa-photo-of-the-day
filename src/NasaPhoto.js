@@ -127,7 +127,7 @@ const NasaImage = styled.img`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-bottom: 100px;
   width: 60%;
-  height: 300px;
+  height: 500px;
 
   @media ${(prop) => prop.theme.breakpointMobile} {
     width: 100%;
@@ -138,7 +138,7 @@ const NasaIframe = styled.iframe`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-bottom: 100px;
   width: 60%;
-  height: 300px;
+  height: 500px;
 
   @media ${(prop) => prop.theme.breakpointMobile} {
     width: 100%;

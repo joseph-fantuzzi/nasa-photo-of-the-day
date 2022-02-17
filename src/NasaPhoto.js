@@ -159,7 +159,7 @@ function NasaPhoto(props) {
         </HeaderDiv>
         <MainContentDiv>
           <LogoImg id="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/200px-NASA_logo.svg.png" alt="NASA Logo" />
-          <TextWrapperDiv media={mediaType}>
+          <TextWrapperDiv className="text-wrapper" media={mediaType}>
             <h2>{title}</h2>
             <p>{date}</p>
             <p>{explanation}</p>

@@ -14,6 +14,35 @@ document.addEventListener("click", () => {
   remove.classList.remove("modal-active");
 });
 
+//Keyframes
+
+const TextKeyFrame = keyframes`
+   50% {
+      transform: scale(0.5);
+   }
+   100% {
+      opacity: 1;
+      transform: scale(1);
+   }
+`;
+
+const LogoKeyFrame = keyframes`
+   100% {
+      opacity: 1;
+      transform: scale(1) rotateZ(0);
+   }
+`;
+
+const ButtonKeyFrame = keyframes`
+   50% {
+      transform: scale(0.5);
+   }
+   100% {
+      opacity: 1;
+      transform: scale(1);
+   }
+`;
+
 //Styled Components
 
 const ApodWrapperDiv = styled.div`
@@ -36,6 +65,19 @@ const ApodTitleH1 = styled.h1`
   font-size: 3rem;
 `;
 
+const LogoImg = styled.img`
+  padding: 30px;
+  height: 250px;
+
+  opacity: 0;
+  transform: scale(2) rotateZ(180deg);
+  animation: ${LogoKeyFrame} 0.5s ease-in-out forwards;
+
+  @media ${(prop) => prop.theme.breakpointMobile} {
+    height: 200px;
+  }
+`;
+
 const MainContentDiv = styled.div`
   width: 70%;
   margin: 0 auto;
@@ -43,11 +85,18 @@ const MainContentDiv = styled.div`
 `;
 
 const TextWrapperDiv = styled.div`
-  border: 3px solid ${(prop) => prop.theme.secondaryColor};
   border-radius: 20px;
   padding: 30px;
   margin-bottom: 50px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: none;
+
+  background-color: ${(prop) => (prop.media === "image" ? "#0b3d91" : "#d3d3df")};
+  color: ${(prop) => (prop.media === "image" ? "white" : "black")};
+
+  transform: scale(3);
+  opacity: 0;
+  animation: ${TextKeyFrame} 0.5s ease-in-out forwards;
 `;
 
 const Button = styled.button`
@@ -68,6 +117,32 @@ const Button = styled.button`
     background-color: #fc3d21;
     color: ${(prop) => prop.theme.white};
   }
+
+  transform: scale(3);
+  opacity: 0;
+  animation: ${TextKeyFrame} 0.5s ease-in-out forwards;
+`;
+
+const NasaImage = styled.img`
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-bottom: 100px;
+  width: 60%;
+  height: 300px;
+
+  @media ${(prop) => prop.theme.breakpointMobile} {
+    width: 100%;
+  }
+`;
+
+const NasaIframe = styled.iframe`
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-bottom: 100px;
+  width: 60%;
+  height: 300px;
+
+  @media ${(prop) => prop.theme.breakpointMobile} {
+    width: 100%;
+  }
 `;
 
 //JSX
@@ -83,8 +158,8 @@ function NasaPhoto(props) {
           <h2>Astronomy Picture of the Day</h2>
         </HeaderDiv>
         <MainContentDiv>
-          <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/200px-NASA_logo.svg.png" alt="NASA Logo" />
-          <TextWrapperDiv>
+          <LogoImg id="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/200px-NASA_logo.svg.png" alt="NASA Logo" />
+          <TextWrapperDiv media={mediaType}>
             <h2>{title}</h2>
             <p>{date}</p>
             <p>{explanation}</p>
@@ -92,9 +167,9 @@ function NasaPhoto(props) {
           <Button onClick={modal}>Click for a Full Screen View</Button>
           <div className="nasa-pic-wrapper">
             {mediaType === "video" ? (
-              <iframe src={url} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title={title} />
+              <NasaIframe src={url} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title={title} />
             ) : (
-              <img src={url} alt="APOD Image" />
+              <NasaImage src={url} alt="APOD Image" />
             )}
           </div>
         </MainContentDiv>

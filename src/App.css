@@ -10,7 +10,7 @@
   padding: 10px 0;
 }
 
-iframe {
+/* iframe {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-bottom: 100px;
   width: 60%;
@@ -22,11 +22,7 @@ iframe {
   margin-bottom: 100px;
   width: 60%;
   height: 50vh;
-}
-
-#logo {
-  padding: 30px;
-}
+} */
 
 .modal {
   position: absolute;
@@ -41,8 +37,8 @@ iframe {
 }
 
 .modal .nasa-pic-wrapper {
-  width: 60%;
-  height: 80vh;
+  width: 80%;
+  height: 500px;
   background-color: rgba(0, 0, 0, 1);
 }
 
